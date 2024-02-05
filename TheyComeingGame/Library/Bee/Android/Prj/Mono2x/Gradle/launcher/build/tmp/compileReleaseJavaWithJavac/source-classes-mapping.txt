@@ -1,0 +1,2 @@
+com/OhTheyrecoming/TheyComeingGame/BuildConfig.java
+ com.OhTheyrecoming.TheyComeingGame.BuildConfig
