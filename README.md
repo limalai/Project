@@ -1,3 +1,2 @@
 # Limalai Piyasaeng
-Bachelor of Science (Computer Science), Khon Kaen University, Khon Kaen, Thailand
-Major: Computer Science
+I am a student in Computer Science at the College of Computing, Khon Kaen University, Thailand.
