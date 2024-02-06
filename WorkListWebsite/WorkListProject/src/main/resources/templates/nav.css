@@ -1,0 +1,105 @@
+body {
+    background-color:#F8E8EE;
+        font-family: 'Shadows Into Light', cursive;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    content: "";
+    display: block;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 6px;
+    width: 25px;
+    border-radius: 3px;
+    transition: transform 0.2s ease;
+}
+
+.nav-toggle:checked + .nav-toggle-label .hamburger::before {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle:checked + .nav-toggle-label .hamburger::after {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 250px;
+    height: 100%;
+    background-color: #F2BED1;
+    transition: left 0.3s ease;
+}
+
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.nav-list li {
+    margin: 10px 0;
+}
+
+.nav-list a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+    display: block;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.nav-toggle:checked + .nav-toggle-label + .nav {
+    left: 0;
+}
+
+.nav-toggle:checked + .nav-toggle-label + .nav .nav-list a:hover {
+    background-color: #F2BED1;
+}
+/* ... (previous styles) */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* Semi-transparent black background */
+    opacity: 0;
+    pointer-events: none; /* Allow clicks to pass through when not visible */
+    transition: opacity 0.3s ease;
+}
+
+.nav-toggle:checked + .nav-toggle-label + .nav {
+    left: 0;
+}
+
+.nav-toggle:checked + .nav-toggle-label + .nav .nav-list a:hover {
+    background-color: #F2BED1;
+}
+
+.nav-toggle:checked ~ #overlay {
+    opacity: 1;
+    pointer-events: auto;
+}

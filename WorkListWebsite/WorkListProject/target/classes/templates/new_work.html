@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>  
+<style type="text/css">
+    label {
+        display: inline-block;
+        width: 200px;
+        margin: 5px;
+        text-align: left;
+    }
+    input[type=text], input[type=password], select {
+        display: inline-block;
+        width: 200px;
+    }
+    input[type=radio] {
+        margin-left: 45px;
+    }
+    input[type=checkbox] {
+        margin-right: 190px;
+    }  
+    button {
+        padding: 5px;
+        margin: 10px;
+    }
+</style>
+<title>New Status</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+  
+<body>
+	<div align="center">
+	<h1>New Work </h1>
+	<form action="#" th:action="@{/new_work}" method="post", th:object="${work}">
+		
+		<div class = "form-group row"> 
+			<label ckass="col-from-label col-sm-4">Name:</label>
+			<div class = "col-sm-8">
+				<input type="text" th:field="*{name}" /><br>
+			</div>  
+		</div>
+		
+		<div class = "form-group row"> 
+			<label ckass="col-from-label col-sm-4">Date:</label>
+			<div class = "col-sm-8">
+				<input type="date" th:field="*{date}" /><br>
+			</div>  
+		</div>
+		
+		
+		<div class="form-group row">
+			<label class="col-form-label col-sm*">Subject:</label>
+ 			<div class="col-sm-8">
+				<select th:field="*{subject}" class="form-control">
+					<th:block th:each="subject:${subjectList}">
+						<option th:text="${subject.Name}" th:value="${subject.subjectID}">Select Subject</option>
+					</th:block>
+				</select>
+			</div>
+		</div>	
+		
+		<div class="form-group row">
+			<label class="col-form-label col-sm*">Type:</label>
+ 			<div class="col-sm-8">
+				<select th:field="*{type}" class="form-control">
+					<th:block th:each="type:${typeList}">
+						<option th:text="${type.Name}" th:value="${type.ID}">Select Type</option>
+					</th:block>
+				</select>
+			</div>
+		</div>
+		
+		<div class="form-group row">
+			<label class="col-form-label col-sm*">Status:</label>
+ 			<div class="col-sm-8">
+				<select th:field="*{status}" class="form-control">
+					<th:block th:each="status:${statusList}">
+						<option th:text="${status.Name}" th:value="${status.ID}">Select Status</option>
+					</th:block>
+				</select>
+			</div>
+		</div>
+		
+		
+	   
+		<button type="submit">Save work</button>    
+	</form> 
+   
+   
+   </body>
+</html>
