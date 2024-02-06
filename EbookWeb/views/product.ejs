@@ -1,0 +1,258 @@
+<!--
+=========================================================
+* Material Kit 2 - v3.0.4
+=========================================================
+
+* Product Page:  https://www.creative-tim.com/product/material-kit 
+* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+* Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+<!DOCTYPE html>
+<html lang="th" itemscope itemtype="http://schema.org/WebPage">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="/css/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <title>
+    สินค้า
+  </title>
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Nucleo Icons -->
+  <link href="/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+  <link id="pagestyle" href="./css/material-kit.css?v=3.0.4" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/rate.css">
+  <% if(isLogin){ %>
+    <%- include('./bar/bar_profile', {user: user}); -%>
+  <% }else{ %>
+    <%- include('./bar/bar_login'); -%>
+  <% } %>
+</head>
+
+<body class="about-us bg-gray-200">
+  
+  <!-- -------- START HEADER 7 w/ text and video ------- -->
+  <header class="bg-gradient-dark">
+    <div class="page-header min-vh-75" style="background-image: url('/image/web/bg12.jpg');">
+      <span class="mask bg-gradient-dark opacity-6"></span>
+      <div class="container">
+        <div class="row justify-content-center">
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- -------- END HEADER 7 w/ text and video ------- -->
+  <div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6">
+
+    <!-- -------- START Features w/ pattern background & stats & rocket -------- -->
+    <section class="py-7">
+      <div class="container">
+
+        <img class="w-100 my-auto" style="object-fit:contain; width: 500px; height: 400px; border: solid 1px white; left: auto; margin-left: auto; "src="/image/book/<%= book.image_url%>" onerror="if (this.src != '/image/error.png') this.src = '/image/error.png';" alt="hero">
+        
+        <% if(isOwned){ %>
+          <a href="/read/<%= bookid %>" class="btn bg-gradient-primary btn-icon btn-lg" type="button" style=" left: 40%; margin-left: -20px; top: 10px;">อ่าน</a>
+        <% }else{ %>
+          <a href="/add_owned/<%= bookid %>" class="btn bg-gradient-primary btn-icon btn-lg" type="button" style=" left: 40%; margin-left: -20px; top: 10px;">ซื้อ</a>
+        <% } %>
+        
+        <% if(isFav){ %>
+          <a href="/del_fav/<%= bookid %>" class="btn bg-gradient-primary btn-icon btn-lg" type="button" style=" left: 50%; margin-left: -20px; top: 10px;">ถูกใจแล้ว</a>
+        <% }else{ %>
+          <a href="/add_fav/<%= bookid %>" class="btn bg-gradient-primary btn-icon btn-lg" type="button" style=" left: 50%; margin-left: -20px; top: 10px;">ถูกใจ</a>
+        <% } %>
+        <div class="row">
+          <div class="col-lg-6 col-12">
+            <div class="card card-profile mt-4">
+              <div class="row">
+                <div class="col-lg-8 col-md-6 col-12 my-auto" style="margin-left: 20px;">
+                  <div class="card-body ps-lg-0">
+                    <h5 class="mb-0">ชื่อบทเรียน</h5>
+                    <h6><%= book.name %></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-12">
+            <div class="card card-profile mt-lg-4 mt-5">
+              <div class="row">
+                <div class="col-lg-8 col-md-6 col-12 my-auto" style="margin-left: 20px;">
+                  <div class="card-body ps-lg-0">
+                    <h5 class="mb-0">ราคา</h5>
+                    <h6><%= book.price %> coin</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-lg-6 col-12">
+            <div class="card card-profile mt-4 z-index-2">
+              <div class="row">
+                <div class="col-lg-8 col-md-6 col-12 my-auto">
+                  <div class="card-body ps-lg-0" style="margin-left: 20px;">
+                    <h5 class="mb-0">หมวดหมู่</h5>
+                    <h6><%= book.booktype.name %></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-12">
+            <div class="card card-profile mt-lg-4 mt-5 z-index-2">
+              <div class="row">
+                <div class="col-lg-8 col-md-6 col-12 my-auto">
+                  <div class="card-body ps-lg-0" style="margin-left: 20px;">
+                    <h5 class="mb-0">จำนวนหน้า</h5>
+                    <h6><%= book.no_page %> หน้า</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-4">
+            <div class="card card-profile mt-4 z-index-2">
+              <div class="row">
+                <div >
+                  <div class="card-body ps-lg-0" style="margin-left: 20px;">
+                    <h5 class="mb-0">คำอธิบาย</h5>
+                    <h6><%= book.description %></h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <!-- -------- END Features w/ pattern background & stats & rocket -------- -->
+    
+  </div>
+  <footer class="footer pt-5 mt-5">
+    <div class="container">
+      <div class=" row">
+        <div class="col-12">
+          <div class="text-center">
+            <p class="text-dark my-4 text-sm font-weight-normal">
+              All rights reserved. Copyright © <script>
+                document.write(new Date().getFullYear())
+              </script> Material Kit by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!--   Core JS Files   -->
+  <script src="/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="/js/core/bootstrap.min.js" type="text/javascript"></script>
+  <script src="/js/plugins/perfect-scrollbar.min.js"></script>
+  <!--  Plugin for TypedJS, full documentation here: https://github.com/inorganik/CountUp.js -->
+  <script src="/js/plugins/countup.min.js"></script>
+  <!--  Plugin for Parallax, full documentation here: https://github.com/wagerfield/parallax  -->
+  <script src="/js/plugins/parallax.min.js"></script>
+  <!-- Control Center for Material UI Kit: parallax effects, scripts for the example pages etc -->
+  <!--  Google Maps Plugin    -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script>
+  <script src="/js/material-kit.min.js?v=3.0.4" type="text/javascript"></script>
+  <script>
+    // get the element to animate
+    var element = document.getElementById('count-stats');
+    var elementHeight = element.clientHeight;
+
+    // listen for scroll event and call animate function
+
+    document.addEventListener('scroll', animate);
+
+    // check if element is in view
+    function inView() {
+      // get window height
+      var windowHeight = window.innerHeight;
+      // get number of pixels that the document is scrolled
+      var scrollY = window.scrollY || window.pageYOffset;
+      // get current scroll position (distance from the top of the page to the bottom of the current viewport)
+      var scrollPosition = scrollY + windowHeight;
+      // get element position (distance from the top of the page to the bottom of the element)
+      var elementPosition = element.getBoundingClientRect().top + scrollY + elementHeight;
+
+      // is scroll position greater than element position? (is element in view?)
+      if (scrollPosition > elementPosition) {
+        return true;
+      }
+
+      return false;
+    }
+
+    var animateComplete = true;
+    // animate element when it is in view
+    function animate() {
+
+      // is element in view?
+      if (inView()) {
+        if (animateComplete) {
+          if (document.getElementById('state1')) {
+            const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
+            if (!countUp.error) {
+              countUp.start();
+            } else {
+              console.error(countUp.error);
+            }
+          }
+          if (document.getElementById('state2')) {
+            const countUp1 = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
+            if (!countUp1.error) {
+              countUp1.start();
+            } else {
+              console.error(countUp1.error);
+            }
+          }
+          if (document.getElementById('state3')) {
+            const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
+            if (!countUp2.error) {
+              countUp2.start();
+            } else {
+              console.error(countUp2.error);
+            };
+          }
+          animateComplete = false;
+        }
+      }
+    }
+
+    if (document.getElementById('typed')) {
+      var typed = new Typed("#typed", {
+        stringsElement: '#typed-strings',
+        typeSpeed: 90,
+        backSpeed: 90,
+        backDelay: 200,
+        startDelay: 500,
+        loop: true
+      });
+    }
+  </script>
+  <script>
+    if (document.getElementsByClassName('page-header')) {
+      window.onscroll = debounce(function() {
+        var scrollPosition = window.pageYOffset;
+        var bgParallax = document.querySelector('.page-header');
+        var oVal = (window.scrollY / 3);
+        bgParallax.style.transform = 'translate3d(0,' + oVal + 'px,0)';
+      }, 6);
+    }
+  </script>
+</body>
+
+</html>

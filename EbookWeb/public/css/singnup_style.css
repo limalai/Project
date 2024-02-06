@@ -1,0 +1,116 @@
+body{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    background-color: whitesmoke;
+    font-family: 'Poppins', sans-serif;
+}
+.signup-box{
+
+    position: absolute;
+    z-index: 2;
+    left: 35%;
+    top: 2%;
+    width: 369px;
+    height: 571px;
+    background-color: orange;
+    border-radius: 3px;
+    margin-top: 50px;
+}
+
+.login-box{
+    position: absolute;
+    z-index: 2;
+    left: 35%;
+    margin-top: 100px;
+    width: 360px;
+    height: 270px;
+    border-radius: 3px;
+    background-color: orange;
+}
+
+h1{
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding-top: 15px;
+    font-size: large;
+}
+h4{
+    text-align: center;
+    font-size: small;
+}
+form{
+    width: 300px;
+    margin-left: 20px;
+}
+form label{
+    display: flex;
+    margin-top: 20px;
+    font-size: small;
+    font-family: 'Poppins', sans-serif;
+}
+form input{
+    width: 100%;
+    padding: 5px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+}
+form textarea{
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+}
+input[type="submit"]{
+    align-items: center;
+    width: 100%;
+    height: 35;
+    margin-top: 15px;
+    border: none;
+    background-color: white;
+    font-size: small;
+    color: black;
+}
+
+form select{
+    background: white;
+    background-image: none;
+    color: black;
+    font-size: small;;
+
+    width: 100%;
+    height: 25%;
+    margin-top: 15px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+}
+p{
+    text-align: center;
+    padding-top: 20px;
+    font-size: small;
+}
+.para-2{
+    text-align: center;
+    color: black;
+    font-size: 14px;
+    margin-top: -10px;
+}
+.para-2 a{
+    color: white;
+    font-size: 16px;
+}
+.filter{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    opacity: .7;
+    background: whitesmoke;
+}
+

@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <title>
+    Sheet Admin
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="/css/argon-dashboard.css" rel="stylesheet" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+    <style>
+        body {
+        font-family: "Prompt";
+        }
+        .card .card-body{
+            font-family: "Prompt";
+        }
+    </style>
+</head>
+
+<body class="g-sidenav-show   bg-gray-100" method="POST" action="/insert_book">
+    <header class="header-2">
+        <div class="page-header min-vh-75 relative" style="background-image: url('./assets/img/bg12.jpeg');">
+          <span class="mask bg-gradient-primary opacity-4"></span>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-7 text-center mx-auto">
+                <h1 class="text-white pt-3 mt-n5">สินค้าของเรา</h1>
+                <p class="lead text-white mt-3">มีให้เลือกซื้อได้หลากหลายเนื้อหา<br />สามารถซื้อได้เลย</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </header>
+    <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h6>แก้ไขสินค้า</h6>
+                    </div>
+                    <div class="card-body pb-2">
+                        
+                        <form action="/edit_book/<%= book.id%>"  method="POST">
+                            <div class="row">
+                                <div class="card-header pb-0" style="color: red;">
+                                    <% if(locals.errs){ %>
+                                        <% errs.forEach((msg) =>{ %>
+                                          <p><%= msg %></p>
+                                        <% }); %>    
+                                    <% } %>
+                                </div>
+                                <div class="col">
+    
+                                    <div class="form-group">
+                                        <label for="name" class="form-control-label">ชื่อสินค้า</label>
+                                        <input class="form-control" type="text" id="name" name="name" value="<%= book.name %>">
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="product_type_id" 
+                                        class="form-control-label">หมวดหมู่</label>
+                                        <select class="form-control" name="type" id="type"">
+                                            <option selected disabled>เลือกหมวดหมู่</option>                                   
+                                            <% for(index in booktype){%>
+                                                <% if(booktype[index].id==book.booktype.id){ %>
+                                                    <option selected value=<%= booktype[index].id %> ><%= booktype[index].name %></option>
+                                                <% }else{ %>
+                                                    <option value=<%= booktype[index].id %>><%= booktype[index].name %></option>
+                                                <% } %>
+                                            <% } %>    
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="cost" class="form-control-label">จำนวนหน้า</label>
+                                        <input class="form-control" type="text" id="no_page" name="no_page" value="<%= book.no_page %>">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price" class="form-control-label">ราคาสินค้า</label>
+                                        <input class="form-control" type="text" id="price" name="price" value="<%= book.price %>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+    
+                                <div class="col">
+                                    <label for="image_url" class="form-control-label">รายละเอียด</label>
+                                    <textarea class="form-control" name="bdetail" id="bdetail" cols="44" rows="5" ><%= book.description %></textarea>
+                                </div>     
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-success px-3 py-2" value="บันทึก">
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+    
+                    </form>
+    
+                </div>
+                <div class="card-footer pb-0">
+    
+                </div>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+    
+
+
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="/js/argon-dashboard.min.js"></script>
+</body>
+
+</html>

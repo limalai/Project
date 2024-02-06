@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/web/apple-icon.png">
+  <link rel="icon" type="image/png" href="/img/web/favicon.png">
+  <title>
+    Admin
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="/css/argon-dashboard.css" rel="stylesheet" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+    <style>
+        body {
+        font-family: "Prompt";
+        }
+        .card .card-body{
+            font-family: "Prompt";
+        }
+    </style>
+
+    <%- include('../bar/bar_admin'); -%>
+    
+</head>
+
+<body class="g-sidenav-show   bg-gray-100">
+    <header class="header-2">
+        <div class="page-header min-vh-75 relative" style="background-image: url('/img/bg12.jpeg');">
+          <span class="mask bg-gradient-primary opacity-4"></span>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-7 text-center mx-auto">
+                <h1 class="text-white pt-3 mt-n5">สินค้าของเรา</h1>
+                <p class="lead text-white mt-3">มีให้เลือกซื้อได้หลากหลายเนื้อหา<br />สามารถซื้อได้เลย</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </header>
+    <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
+        <div class="row">
+            <div class="col">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <div class="row">
+                            <div class="col">
+                                <h6>สินค้าของเรา (รายการ)</h6>
+                            </div>
+                            <div class="col-2">
+                                <a href="/add_book" class="btn btn-success px-3 py-2">
+                                    <i class="fa fa-plus"></i> เพิ่มสินค้า
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body px-0 pt-0 pb-2">
+                        <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">รหัสสินค้า</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ชื่อสินค้า</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">หมวดหมู่</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">ราคา</th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">จำนวนขาย</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">เครื่องมือ</th>
+                                    </tr>
+                                </thead>
+                                <% books.forEach((book)=>{%>
+                                <tbody>
+                                        <tr>
+                                            <td><p class="text-xs font-weight-bold mb-0"><%= book.id %></p></td>
+                                            <td><p class="text-xs font-weight-bold mb-0"><%= book.name %></p></td>
+                                            <td><p class="text-xs font-weight-bold mb-0"><%= book.booktype.name %></p></td>
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0"><%= book.price %></p>
+                                                <p class="text-xs text-secondary mb-0">coin</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-xs font-weight-bold mb-0"><%= book.owneds.length %></p>
+                                                <p class="text-xs text-secondary mb-0">จำนวน</p>
+                                            </td>
+                                            <td class="align-middle">
+                                            <a href="/editbook/<%= book.id %>" class="btn btn-outline-success px-3 py-2">
+                                                <i class="fa fa-pencil"></i> แก้ไข
+                                            </a>
+                                            <a href="/editfile/<%= book.id %>" class="btn btn-outline-success px-3 py-2">
+                                                <i class="fa fa-pencil"></i> แก้ไขไฟล์
+                                            </a>
+                                            <% if(book.owneds.length<=0){ %>
+                                                <a href="/delete_book/<%= book.id %>" class="btn btn-outline-success px-3 py-2">
+                                                    <i class="fa fa-pencil"></i> นำออก
+                                                </a>
+                                            <% } %>
+                                                
+                                            </td>
+                                        </tr>
+                                </tbody>
+                                <% }) %>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+
+  <!--   Core JS Files   -->
+  <script src="/js/core/popper.min.js"></script>
+  <script src="/js/core/bootstrap.min.js"></script>
+  <script src="/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="/js/plugins/smooth-scrollbar.min.js"></script>
+</body>
+
+</html>

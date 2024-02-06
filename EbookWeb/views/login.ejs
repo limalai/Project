@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <title>
+    เข้าสู่ระบบ
+  </title>
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="/css/argon-dashboard.css" rel="stylesheet" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prompt">
+    <style>
+        body {
+        font-family: "Prompt";
+        }
+        .card .card-body{
+            font-family: "Prompt";
+        }
+    </style>
+</head>
+
+<body class="g-sidenav-show   bg-gray-100" method="POST" action="/insert_book">
+    <header class="header-2">
+        <div class="page-header min-vh-75 relative" style="background-image: url('image/web/bg12.jpg');">
+        </div>
+    </header>
+    <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0">
+                        <h6>เข้าสู่ระบบ</h6>
+                    </div>
+                    <div class="card-header pb-0" style="color: red;">
+                        <% if(locals.errs){ %>
+                            <% errs.forEach((msg) =>{ %>
+                              <p><%= msg %></p>
+                            <% }); %>    
+                          <% } %>
+                    </div>
+                    <div class="card-body pb-2">
+                        <form role="form" class="text-start" method="POST" action="/check_login">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="cost" class="form-control-label">Email</label>
+                                        <input class="form-control" type="email" name="email" id="email" value="<%= (locals.old_data) ? old_data.email: '' %>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="price" class="form-control-label">Password</label>
+                                        <input class="form-control" type="password" name="password" id="password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <input type="submit" class="btn btn-success px-3 py-2" value="เข้าสู่ระบบ"></input>
+                              </div>
+                              <p class="mt-4 text-sm text-center">
+                                ยังไม่มี account หรือไม่ <a href="/register">สมัครสมาชิกที่นี่</a>
+                              </p>
+                            </div>
+                        </form>
+                    </div>
+
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="/js/argon-dashboard.min.js"></script>
+</body>
+
+</html>

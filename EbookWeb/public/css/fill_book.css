@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+table tr td{
+    margin: 5px 5px;
+
+}table tr td #img{
+    border-style: none;
+}
