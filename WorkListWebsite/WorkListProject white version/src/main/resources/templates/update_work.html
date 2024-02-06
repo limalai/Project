@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<link rel="stylesheet" href="./nav.css">
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+		label {
+			display: inline-block;
+			width: 200px;
+			margin: 5px;
+			text-align: left;
+			font-size: 18px;
+			color: rgba(0, 0, 0, 0.7);
+		}
+
+		input[type=text],
+		input[type=password],
+		select {
+			display: inline-block;
+			width: 35%;
+			height: 35px;
+			border-radius: 12.5px;
+		}
+
+		input[type=radio] {
+			margin-left: 45px;
+		}
+
+		input[type=checkbox] {
+			margin-right: 190px;
+		}
+
+		button {
+			font-family: 'Shadows Into Light', cursive;
+			padding: 5px;
+			margin: 10px;
+			width: 10%;
+			height: 35px;
+			border-radius: 11px;
+		}
+
+		.container {
+			background-color: #F9F5F6;
+			width: 50%;
+			height: 40%;
+			padding: 20px;
+			margin: 5% 20%;
+			border: 1px solid #FDCEDF;
+			border-radius: 45px;
+		}
+	</style>
+	<title>Update</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+	<div Work Updating align="center" class="container">
+		<h1>UPDATE WORK</h1>
+		<form th:action="@{/update_work/{id}(id=${work.WorkID})}" th:object="${work}" method="post">
+
+			<div class="form-group row">
+				<label class="col-form-label col-sm-4">Name:</label>
+				<div class="col-sm-8">
+					<input type="text" th:field="*{name}" placeholder="name" /><br>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-form-label col-sm-4">Date:</label>
+				<div class="col-sm-8">
+					<input type="date" th:field="*{date}" placeholder="date" /><br>
+				</div>
+			</div>
+
+
+			<select th:field="*{subject}" class="form-control">
+				<th:block th:each="subject : ${subjectList}">
+					<option th:text="${subject.Name}" th:value="${subject.subjectID}">Select Subject</option>
+				</th:block>
+			</select>
+
+
+
+			<select th:field="*{type}" class="form-control">
+				<th:block th:each="type : ${typeList}">
+					<option th:text="${type.Name}" th:value="${type.ID}">Select Type</option>
+				</th:block>
+			</select>
+
+
+			<select th:field="*{status}" class="form-control">
+				<th:block th:each="status : ${statusList}">
+					<option th:text="${status.Name}" th:value="${status.ID}">Select Status</option>
+				</th:block>
+			</select>
+
+			<button type="submit">Save work</button>
+		</form>
+	</div>
+
+</body>
+
+</html>

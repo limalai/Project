@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmln:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Inventory Homepage</title>
+ <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <div align="center" class="container">
+        <h1>Welcome to Inventory</h1>
+     </div>
+    <div class="container">
+	     
+	<p><a href="/list_work">Work List</a></p>
+	<p><a href="/list_subject">Subject List</a></p>
+	<p><a href="/list_type">Type List</a></p>
+	<p><a href="/list_status">Status List</a></p>
+    	
+</div>
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+</body>
+</html>
